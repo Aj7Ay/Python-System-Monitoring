@@ -1,5 +1,5 @@
 # Used by `image`, `push` & `deploy` targets, override as required
-IMAGE_REG ?= ghcr.io
+IMAGE_REG ?= docker.io
 IMAGE_REPO ?= sevenajay/python-system-monitoring
 IMAGE_TAG ?= latest
 
