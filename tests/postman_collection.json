@@ -119,6 +119,44 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Check System Info",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"System Info: Successful GET request\", function () {",
+              "    pm.response.to.be.ok;",
+              "});",
+              "",
+              "pm.test(\"System Info: Response valid & JSON body\", function () {",
+              "    pm.response.to.be.withBody;",
+              "    pm.response.to.be.json;",
+              "});",
+              "",
+              "pm.test(\"System Info: Check Memory Usage\", function () {",
+              "    var systemInfo = pm.response.json();",
+              "    pm.expect(systemInfo.memoryUsageGB).to.be.above(0);", // Modify as needed
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://{{apphost}}/api/system-info",
+          "protocol": "http",
+          "host": ["{{apphost}}"],
+          "path": ["api", "system-info"]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
